@@ -1,7 +1,10 @@
 Example of Avro serialization/deserialization messages to Kafka.
 Producer takes Kafka connection info and a semicolon separated file to generate messages
 
-List of available flags
+HowTo
+1. `./mvnw clean verify`, or `mvnw clean verify` for Windows
+
+Pass appropriate values for the next list of arguments as in examples below
 ```
 -bootstrap, -bs                  A list of host/port pairs to use for establishing the initial connection to the Kafka cluster
 -schemaregistryurl, -srurl       Schema registry url
