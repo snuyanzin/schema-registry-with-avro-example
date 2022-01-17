@@ -31,7 +31,7 @@ bin/producer -bs kafka-1690a57d-senu-dev-sandbox.aivencloud.com:12693 \
              -t clickrecordTopic
 ```
 
-An example of message consumption (for Windows use producer.bat)
+An example of message consumption (for Windows use consumer.bat)
 ```
 bin/consumer -bs kafka-1690a57d-senu-dev-sandbox.aivencloud.com:12693 \
              -ksp myKeySt0reP@ssw0rd \
