@@ -47,3 +47,11 @@ bin/consumer -bs kafka-1690a57d-senu-dev-sandbox.aivencloud.com:12693 \
              -sslp mySSLKeyP@ssw0rd \
              -t clickrecordTopic
 ```
+
+An example of `fileWithData` content
+```
+Any line without semicolon is considered as a comment
+SESSION  CHANNEL   BROWSER   CAMPAIGN     REFERRER   IP
+session1;channel1;mozilla;campaign2;referrer1;32.18.1.1
+session2;channel2;chrome;campaign1;referrer3;72.168.1.1
+```
