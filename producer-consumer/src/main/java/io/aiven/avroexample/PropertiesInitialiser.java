@@ -25,6 +25,13 @@ class PropertiesInitialiser {
                 case "-sslkeypassword": case "-sslp": sslKeyPassword = args[++i]; break;
             }
         }
+        if (bootstrapServers == null || truststore == null || keystorePassword == null
+          || truststorePassword == null || keystore == null || schemaRegistryUrl == null
+          || schemaRegistryUser == null || schemaRegistryPassword == null || sslKeyPassword == null) {
+            throw new IllegalArgumentException("One of bootstrapServers, truststore, keystorePassword, \n"
+                    + "truststorePassword, keystore, schemaRegistryUrl, schemaRegistryUser, \n"
+                    + "schemaRegistryPassword, sslKeyPassword is null");
+        }
         final Properties props = new Properties();
         props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SSL");

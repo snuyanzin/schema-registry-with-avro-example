@@ -1,10 +1,19 @@
-Example of Avro serialization/deserialization messages to Kafka.
-Producer takes Kafka connection info and a semicolon separated file to generate messages
+The project demonstrates how to read send/receive messages serialized/deserialized with Avro to/from Kafka
 
-HowTo
-1. `./mvnw clean verify`, or `mvnw clean verify` for Windows
+### Requirements
+Installed JDK 1.8+
+Configured JAVA_HOME
 
-Pass appropriate values for the next list of arguments as in examples below
+### Preparation
+In case of Linux/Mac `./mvnw clean verify`
+In case of Windows `mvnw clean verify`
+
+### Get credentials
+Follow the instructions at https://developer.aiven.io/docs/products/kafka/howto/keystore-truststore 
+
+### List of available flags
+
+List of arguments 
 ```
 -bootstrap, -bs                  A list of host/port pairs to use for establishing the initial connection to the Kafka cluster
 -schemaregistryurl, -srurl       Schema registry url
@@ -19,6 +28,7 @@ Pass appropriate values for the next list of arguments as in examples below
 -t                               Kafka topic
 ```
 
+### Sending messages
 An example of message producing (for Windows use producer.bat)
 ```
 bin/producer -bs kafka-1690a57d-senu-dev-sandbox.aivencloud.com:12693 \
@@ -34,6 +44,7 @@ bin/producer -bs kafka-1690a57d-senu-dev-sandbox.aivencloud.com:12693 \
              -t clickrecordTopic
 ```
 
+### Receiving messages
 An example of message consumption (for Windows use consumer.bat)
 ```
 bin/consumer -bs kafka-1690a57d-senu-dev-sandbox.aivencloud.com:12693 \
@@ -46,12 +57,4 @@ bin/consumer -bs kafka-1690a57d-senu-dev-sandbox.aivencloud.com:12693 \
              -sru avnadmin \
              -sslp mySSLKeyP@ssw0rd \
              -t clickrecordTopic
-```
-
-An example of `fileWithData` content
-```
-Any line without semicolon is considered as a comment
-SESSION  CHANNEL   BROWSER   CAMPAIGN     REFERRER   IP
-session1;channel1;mozilla;campaign2;referrer1;32.18.1.1
-session2;channel2;chrome;campaign1;referrer3;72.168.1.1
 ```

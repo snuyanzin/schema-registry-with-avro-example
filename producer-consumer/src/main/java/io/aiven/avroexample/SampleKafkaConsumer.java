@@ -12,8 +12,6 @@ import org.apache.kafka.common.serialization.StringDeserializer;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
-import java.util.List;
-import java.util.Map;
 import java.util.Properties;
 
 import static io.aiven.avroexample.PropertiesInitialiser.initKafkaProperties;
@@ -24,8 +22,7 @@ public final class SampleKafkaConsumer {
         final Properties props = initProperties(args);
         String topic = readArg(args, "-t");
         if (topic == null) {
-            System.out.println("Please provide a valid topic with -t flag");
-            return;
+            throw new IllegalArgumentException("Please provide a valid topic with -t flag");
         }
         KafkaConsumer<String, ClickRecord> consumer = new KafkaConsumer<>(props);
 

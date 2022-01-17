@@ -10,7 +10,6 @@ import org.apache.kafka.common.serialization.StringSerializer;
 import java.io.BufferedReader;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Arrays;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -25,12 +24,10 @@ public final class SampleKafkaProducer {
         String topic = readArg(args, "-t");
 
         if (filename == null || Files.notExists(filepath) || Files.isDirectory(filepath)) {
-            System.out.println("Please provide a valid filename with -f flag");
-            return;
+            throw new IllegalArgumentException("Please provide a valid filename with -f flag");
         }
         if (topic == null) {
-            System.out.println("Please provide a valid topic with -t flag");
-            return;
+            throw new IllegalArgumentException("Please provide a valid topic with -t flag");
         }
         try (KafkaProducer<String, ClickRecord> producer = new KafkaProducer<>(props);
             BufferedReader br = Files.newBufferedReader(filepath)) {
